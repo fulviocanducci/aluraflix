@@ -10,7 +10,10 @@ function Menu() {
       <a href="/">
         <img src={Logo} border="0" alt="FulFix" className="Logo" />
       </a>
-      <Button href="/">Novo vídeo</Button>
+      <Button className="ButtonLink" href="/">
+        Novo vídeo
+      </Button>
+      <bu
     </nav>
   );
 }
