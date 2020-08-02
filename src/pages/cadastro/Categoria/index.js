@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import FormField from '../../../components/FormField';
 import PageDefault from '../../../components/PageDefault';
+import { Container, Div } from '../../../components/Utils';
 
 function CadastroCategoria() {
   const initialValue = { nome: '', cor: '#000000', descricao: '' };
@@ -16,9 +17,18 @@ function CadastroCategoria() {
     setCategorias([...categorias, { ...categoria }]);
     setCategoria(initialValue);
   };
+  useEffect(() => {
+    console.log('init ...');
+    return () => {
+      console.log('dispose ...');
+    };
+  }, []);
   return (
     <PageDefault>
-      <h1>Cadastro de Categoria{categoria && ': ' + categoria.nome}</h1>
+      <h1>Cadastro de Categoria{categoria && `: ${categoria.nome}`}</h1>
+      <Div>
+        <Container>Source</Container>
+      </Div>
       <form onSubmit={handleSubmit}>
         <FormField
           name="nome"
@@ -55,7 +65,7 @@ function CadastroCategoria() {
           ))}
         </ul>
       </div>
-      <Link to="/">Home</Link>{' '}
+      <Link to="/">Home</Link>
     </PageDefault>
   );
 }
